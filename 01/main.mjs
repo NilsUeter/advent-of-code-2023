@@ -1,26 +1,22 @@
 import { testInput, realInput } from "./input.mjs";
 
-// split by new line
-let input1 = realInput.split("\n");
-
-// split by alphanumeric
-input1 = input1.map((line) =>
+let input1 = realInput.split("\n").map((line) =>
 	line
-		.replace(/\D/g, ".")
+		.replace(/\D/g, ".") // replace all non-digits with a dot
 		.split("")
 		.filter((char) => char !== ".")
 );
 
-const puzzle1 = () => {
+const part1 = () => {
 	let sum = 0;
-	for (let i = 0; i < input1.length; i++) {
-		const row = input1[i];
+	// iterate over each row
+	for (const row of input1) {
 		sum += parseInt(row[0] + row[row.length - 1]);
 	}
 	return sum;
 };
 
-console.log(puzzle1());
+console.log(part1());
 
 let input2 = realInput
 	.replaceAll("one", "one1one")
@@ -31,23 +27,21 @@ let input2 = realInput
 	.replaceAll("six", "six6six")
 	.replaceAll("seven", "seven7seven")
 	.replaceAll("eight", "eight8eight")
-	.replaceAll("nine", "nine9nine");
-input2 = input2.split("\n");
-input2 = input2.map((line) =>
-	line
+	.replaceAll("nine", "nine9nine")
+	.split("\n")
+	.map((line) =>
+		line
+			.replace(/\D/g, ".") // replace all non-digits with a dot
+			.split("")
+			.filter((char) => char !== ".")
+	);
 
-		.replace(/\D/g, ".")
-		.split("")
-		.filter((char) => char !== ".")
-);
-
-const puzzle2 = () => {
+const part2 = () => {
 	let sum = 0;
-	for (let i = 0; i < input2.length; i++) {
-		const row = input2[i];
+	for (const row of input2) {
 		sum += parseInt(row[0] + row[row.length - 1]);
 	}
 	return sum;
 };
 
-console.log(puzzle2());
+console.log(part2());
