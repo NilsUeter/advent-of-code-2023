@@ -9,7 +9,6 @@ let input1 = realInput.split("\n").map((line) =>
 
 const part1 = () => {
 	let sum = 0;
-	// iterate over each row
 	for (const row of input1) {
 		sum += parseInt(row[0] + row[row.length - 1]);
 	}
